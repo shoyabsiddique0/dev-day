@@ -6,6 +6,14 @@ Please locate all web projects in the /web directory.
 
 ### Blog
 
+
+- Check the blog folder, import the postman collection into Postman for testing
+- Run the server
+- Use the /api/posts route directly from Postman to perform CRUD operations
+- Please check out the code for detailed usage.
+- All CRUD operations are listed in the below image
+
+
 ```cmd
 npm install
 npm start
@@ -77,6 +85,8 @@ Please locate all web projects in the /ML directory. There are Jupyter Notebooks
 
 ### House Price Prediction - Please Check Folder
 ![](https://raw.githubusercontent.com/shoyabsiddique0/dev-day/main/assets/ml.housing.1.png?token=GHSAT0AAAAAACPVHDZS6OMU6OHMSIULEREKZP5PMBA)
+
+*Note: Units is in 1000s* I.e 1000$ = 1
 
 ### Fraud Transaction Detection - <https://colab.research.google.com/drive/1yU5t4QwEShQyY6VEJx2lulsb0-HS9s1T?usp=sharing>
 
