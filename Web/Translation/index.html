@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Language Translation App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Language Translation App</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sourceLanguage">Source Language</label>
+                    <select class="form-control" id="sourceLanguage">
+                        <option value="auto">Auto Detect</option>
+                        <!-- Add more language options here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="targetLanguage">Target Language</label>
+                    <select class="form-control" id="targetLanguage">
+                        <!-- Add language options here -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sourceText">Source Text</label>
+                    <textarea class="form-control" id="sourceText" rows="5"></textarea>
+                </div>
+                <button class="btn btn-primary" onclick="translateText()">Translate</button>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="translatedText">Translated Text</label>
+                    <textarea class="form-control" id="translatedText" rows="5" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@google-cloud/translate@2.5.0/build/src/v2/index.js"></script>
+</body>
+
+</html>

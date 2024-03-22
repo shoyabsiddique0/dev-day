@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Collaborative Document Editing</title>
+    <style>
+        #editor {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Collaborative Document Editing</h1>
+    <textarea id="editor"></textarea>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const editor = document.getElementById('editor');
+
+        // Join a document
+        const documentId = prompt('Enter the document ID:');
+        socket.emit('join', documentId);
+
+        // Receive content updates
+        socket.on('content', (content) => {
+            editor.value = content;
+        });
+
+        // Send content updates
+        editor.addEventListener('input', () => {
+            socket.emit('content', documentId, editor.value);
+        });
+    </script>
+</body>
+
+</html>
