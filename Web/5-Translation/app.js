@@ -1,7 +1,5 @@
-const translate = new google.cloud.translate.v2.TranslationServiceClient();
-
-// Replace with your Google Cloud API key
-const apiKey = "YOUR_API_KEY";
+// Replace with your MyMemory API key
+const apiKey = "6afd2424fa8b5bcd670b";
 
 // Helper function to populate language options
 function populateLanguageOptions(selectElement, languages) {
@@ -15,9 +13,9 @@ function populateLanguageOptions(selectElement, languages) {
 
 // Supported languages (you can fetch this from the API or hardcode it)
 const supportedLanguages = [
-  { code: "en", name: "English" },
-  { code: "fr", name: "French" },
-  { code: "es", name: "Spanish" },
+  { code: "English", name: "English" },
+  { code: "French", name: "French" },
+  { code: "Spanish", name: "Spanish" },
   // Add more languages here
 ];
 
@@ -38,19 +36,32 @@ async function translateText() {
   }
 
   try {
-    const request = {
-      parent: `projects/YOUR_PROJECT_ID/locations/global`,
-      contents: [sourceText],
-      mimeType: "text/plain",
-      sourceLanguageCode:
-        sourceLanguage === "auto" ? undefined : sourceLanguage,
-      targetLanguageCode: targetLanguage,
-    };
+    console.log(
+      "https://api.mymemory.translated.net/get?q=" +
+        encodeURIComponent(sourceText) +
+        "&langpair=" +
+        sourceLanguage +
+        "|" +
+        targetLanguage
+    );
+    const response = await fetch(
+      "https://api.mymemory.translated.net/get?q=" +
+        encodeURIComponent(sourceText) +
+        "&langpair=" +
+        sourceLanguage +
+        "|" +
+        targetLanguage
+    );
 
-    const [response] = await translate.translateText(request);
-    const translatedText = response.translations[0].translatedText;
+    const data = await response.json();
 
-    document.getElementById("translatedText").value = translatedText;
+    if (response.ok) {
+      const translatedText = data.responseData.translatedText;
+      document.getElementById("translatedText").value = translatedText;
+    } else {
+      console.error("Error translating text:", data.error.message);
+      alert("Error translating text. Please try again.");
+    }
   } catch (error) {
     console.error("Error translating text:", error);
     alert("Error translating text. Please try again.");
