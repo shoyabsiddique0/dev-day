@@ -1,7 +1,5 @@
-// Replace with your MyMemory API key
 const apiKey = "6afd2424fa8b5bcd670b";
 
-// Helper function to populate language options
 function populateLanguageOptions(selectElement, languages) {
   languages.forEach((lang) => {
     const option = document.createElement("option");
@@ -11,15 +9,12 @@ function populateLanguageOptions(selectElement, languages) {
   });
 }
 
-// Supported languages (you can fetch this from the API or hardcode it)
 const supportedLanguages = [
   { code: "English", name: "English" },
   { code: "French", name: "French" },
   { code: "Spanish", name: "Spanish" },
-  // Add more languages here
 ];
 
-// Populate language options
 const sourceLanguageSelect = document.getElementById("sourceLanguage");
 const targetLanguageSelect = document.getElementById("targetLanguage");
 populateLanguageOptions(sourceLanguageSelect, supportedLanguages);

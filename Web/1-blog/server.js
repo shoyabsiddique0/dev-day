@@ -29,7 +29,7 @@ app.get("/api/posts", (req, res) => {
   const { sortBy, order, author } = req.query;
 
   let sortedPosts = blogPosts;
-  //   console.log(sortedPosts);
+
   if (sortBy === "date") {
     sortedPosts = sortBlogPostsByDate(order);
   } else if (sortBy === "author") {
@@ -45,7 +45,7 @@ app.get("/api/posts", (req, res) => {
 
 app.get("/api/posts/:id", (req, res) => {
   const post = getBlogPostById(parseInt(req.params.id));
-  // console.log(post);
+
   if (post) {
     res.json(post);
   } else {
@@ -60,7 +60,7 @@ app.put("/api/posts/:id", (req, res) => {
     content: content || undefined,
     author: author || undefined,
   };
-  // console.log(updatedPost);
+
   const post = updateBlogPost(parseInt(req.params.id), updatedPost);
   if (post) {
     res.json(post);
@@ -71,7 +71,7 @@ app.put("/api/posts/:id", (req, res) => {
 
 app.delete("/api/posts/:id", (req, res) => {
   const deletedPost = deleteBlogPost(parseInt(req.params.id));
-  // console.log(deletedPost);
+
   if (deletedPost) {
     res.json(deletedPost);
   } else {

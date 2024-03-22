@@ -1,4 +1,3 @@
-// popup.js
 document.addEventListener("DOMContentLoaded", function () {
   const bookmarkNameInput = document.getElementById("bookmarkNameInput");
   const bookmarkUrlInput = document.getElementById("bookmarkUrlInput");
@@ -6,13 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   const bookmarkList = document.getElementById("bookmarkList");
 
-  // Load bookmarks from Chrome storage
   chrome.storage.sync.get("bookmarks", function (data) {
     const bookmarks = data.bookmarks || [];
     renderBookmarks(bookmarks);
   });
 
-  // Add bookmark
   addBookmarkButton.addEventListener("click", function () {
     const bookmarkName = bookmarkNameInput.value.trim();
     const bookmarkUrl = bookmarkUrlInput.value.trim();
@@ -29,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Delete bookmark
   bookmarkList.addEventListener("click", function (event) {
     if (event.target.classList.contains("delete-btn")) {
       const bookmarkUrl = event.target.dataset.url;
@@ -45,7 +41,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Search bookmarks
   searchInput.addEventListener("input", function () {
     const searchTerm = searchInput.value.toLowerCase();
     chrome.storage.sync.get("bookmarks", function (data) {
@@ -59,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Render bookmarks
   function renderBookmarks(bookmarks) {
     bookmarkList.innerHTML = "";
     bookmarks.forEach((bookmark) => {

@@ -22,16 +22,16 @@
         const socket = io();
         const editor = document.getElementById('editor');
 
-        // Join a document
+        
         const documentId = prompt('Enter the document ID:');
         socket.emit('join', documentId);
 
-        // Receive content updates
+        
         socket.on('content', (content) => {
             editor.value = content;
         });
 
-        // Send content updates
+        
         editor.addEventListener('input', () => {
             socket.emit('content', documentId, editor.value);
         });

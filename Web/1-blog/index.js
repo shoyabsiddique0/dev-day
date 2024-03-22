@@ -3,7 +3,7 @@ const app = express();
 app.use(express.json());
 const Fuse = require("fuse.js");
 
-// Blog Post Model
+
 class BlogPost {
   constructor(id, title, content, publicationDate, author) {
     this.id = id;
@@ -14,12 +14,12 @@ class BlogPost {
   }
 }
 
-// Data Storage (Array)
+
 let blogPosts = [];
 
-// API Routes
 
-// Create a new blog post
+
+
 app.post("/api/posts", (req, res) => {
   const { title, content, author } = req.body;
   const id = blogPosts.length + 1;
@@ -29,7 +29,7 @@ app.post("/api/posts", (req, res) => {
   res.status(201).json(newPost);
 });
 
-// Read (get) all blog posts
+
 app.get("/api/posts", (req, res) => {
   const { sortBy, order, author } = req.query;
 
@@ -48,7 +48,7 @@ app.get("/api/posts", (req, res) => {
   res.json(sortedPosts);
 });
 
-// Read (get) a blog post by ID
+
 app.get("/api/posts/:id", (req, res) => {
   const post = getBlogPostById(parseInt(req.params.id));
   if (post) {
@@ -58,7 +58,7 @@ app.get("/api/posts/:id", (req, res) => {
   }
 });
 
-// Update a blog post by ID
+
 app.put("/api/posts/:id", (req, res) => {
   const { title, content, author } = req.body;
   const updatedPost = {
@@ -74,7 +74,7 @@ app.put("/api/posts/:id", (req, res) => {
   }
 });
 
-// Delete a blog post by ID
+
 app.delete("/api/posts/:id", (req, res) => {
   const deletedPost = deleteBlogPost(parseInt(req.params.id));
   if (deletedPost) {
@@ -84,9 +84,9 @@ app.delete("/api/posts/:id", (req, res) => {
   }
 });
 
-// Helper Functions
 
-// Sort blog posts by publication date (ascending or descending)
+
+
 function sortBlogPostsByDate(order = "asc") {
   return blogPosts.sort((a, b) => {
     if (order === "asc") {
@@ -97,7 +97,7 @@ function sortBlogPostsByDate(order = "asc") {
   });
 }
 
-// Sort blog posts by author name (alphabetically)
+
 function sortBlogPostsByAuthor(order = "asc") {
   return blogPosts.sort((a, b) => {
     if (order === "asc") {
@@ -108,7 +108,7 @@ function sortBlogPostsByAuthor(order = "asc") {
   });
 }
 
-// Filter blog posts by author
+
 function createFuseInstance() {
   return new Fuse(blogPosts, {
     keys: ["author"],
@@ -116,19 +116,19 @@ function createFuseInstance() {
   });
 }
 
-// Filter blog posts by author (fuzzy search)
+
 function filterBlogPostsByAuthor(authorQuery) {
   const fuse = createFuseInstance();
   const result = fuse.search(authorQuery);
   return result.map((item) => item.item);
 }
 
-// Read (get) a blog post by ID
+
 function getBlogPostById(id) {
   return blogPosts.find((post) => post.id === id);
 }
 
-// Update a blog post by ID
+
 function updateBlogPost(id, updatedPost) {
   const index = blogPosts.findIndex((post) => post.id === id);
   if (index !== -1) {
@@ -138,7 +138,7 @@ function updateBlogPost(id, updatedPost) {
   return null;
 }
 
-// Delete a blog post by ID
+
 function deleteBlogPost(id) {
   const index = blogPosts.findIndex((post) => post.id === id);
   if (index !== -1) {
@@ -149,7 +149,7 @@ function deleteBlogPost(id) {
   return null;
 }
 
-// Start the server
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
