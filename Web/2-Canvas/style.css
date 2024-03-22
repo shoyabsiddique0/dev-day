@@ -1,13 +1,23 @@
+/* Resetting default margin and padding */
 body {
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
 }
 
+/* Ensuring full viewport height */
+html, body {
+  height: 100%;
+}
+
+/* Centering content vertically */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling toolbar */
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -15,6 +25,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* Styling brush options */
 .brush-options {
   display: flex;
   align-items: center;
@@ -28,6 +39,7 @@ body {
   margin-right: 10px;
 }
 
+/* Styling canvas */
 #drawing-canvas {
   border: 1px solid #000;
   cursor: crosshair;
