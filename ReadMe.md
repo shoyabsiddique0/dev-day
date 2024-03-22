@@ -44,6 +44,10 @@ Open `index.html` in the browser
 
 ### Collaborative DocEditor
 
+By the time you review this, the link may have expired but if not test it by visiting https://4df3-14-139-162-2.ngrok-free.app/ and open the link in two different tabs to see the real-time collaboration.
+
+- Enter ID 1 in both tabs to begin editing the same document.
+
 Recorded Demo Here -> (Click on the below image to watch it)
 [![YouTube Video](https://img.youtube.com/vi/dGf55YUMrBE/0.jpg)](https://www.youtube.com/watch?v=dGf55YUMrBE)
 
