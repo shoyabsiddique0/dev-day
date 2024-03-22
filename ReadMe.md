@@ -88,7 +88,11 @@ Please locate all web projects in the /ML directory. There are Jupyter Notebooks
 
 *Note: Units is in 1000s* I.e 1000$ = 1
 
-### Fraud Transaction Detection - <https://colab.research.google.com/drive/1yU5t4QwEShQyY6VEJx2lulsb0-HS9s1T?usp=sharing>
+### Fraud Transaction Detection -
+All code resides in this notebook.
+
+- Before running please go to `ML/Kaggle.json` and upload it in the notebook instance before running all the cells.We are fetching the dataset from Kaggle's API due to high size.
+<https://colab.research.google.com/drive/1yU5t4QwEShQyY6VEJx2lulsb0-HS9s1T?usp=sharing>
 
 ### Customer Churn Prediction - Please check folder
 
